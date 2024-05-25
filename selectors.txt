@@ -1,11 +1,6 @@
 #rso > div:nth-child(2) > div > block-component > div > div.dG2XIf.XzTjhb > div > div > div > div > div.ifM9O > div > div > div > div > div.wDYxhc.NFQFxe.viOShc.LKPcQc > div > div.Z0LcW.AZCkJd.d2J77b.t2b5Cf > div
-
 #rso > div:nth-child(2) > div > block-component > div > div.dG2XIf.XzTjhb > div > div > div > div > div.ifM9O > div > div > div > div > div:nth-child(2) > div > span > span > b
-
 #rso > div:nth-child(2) > div > block-component > div > div.dG2XIf.XzTjhb > div > div > div > div > div.ifM9O > div > div > div > div > div.wDYxhc > div > span > span > b
-
 #rso > div:nth-child(2) > div > block-component > div > div.dG2XIf.EyBRub.XzTjhb > div.L29P6c.fm06If > div > div > div.ifM9O > div > div > div.SALvLe.farUxc.mJ2Mod > div > div > div > div:nth-child(1) > div > span > span > b
-
 #rso > div.ULSxyf > div > block-component > div > div.dG2XIf.EyBRub.XzTjhb > div.L29P6c.fm06If > div > div > div.ifM9O > div > div > div.SALvLe.farUxc.mJ2Mod > div > div > div > div:nth-child(1) > div > span > span > b
-
 #rso > div:nth-child(2) > div > block-component > div > div.dG2XIf.XzTjhb > div > div > div > div > div.ifM9O > div > div > div > div > div.wDYxhc > div > span > span.d9FyLd
