@@ -1,0 +1,6 @@
+venv
+*.zip
+*.txt
+__pycache__
+!requirements.txt
+!selectors.txt
