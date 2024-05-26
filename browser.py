@@ -5,11 +5,23 @@ from functions import *
 import sys
 
 filename = sys.argv[1]
-
 addresses = get_companies(filename)
+
+results = []
+not_found= []
+
+wait_time = 1.5
+
+# Set up selectors
+selectors = []
+selectors_tally = {}
+with open("selectors.txt") as s:
+  selectors = [x.strip() for x in s.readlines()]
+  for i in range(len(selectors)):
+    selectors_tally[i] = 0
+
 chrome_app_path = "./chromedriver/chromedriver"
 # user_data_dir = ""
-
 options = webdriver.ChromeOptions()
 options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36")
 # options.add_argument(f"--user-data-dir={user_data_dir}")
@@ -18,20 +30,9 @@ service = webdriver.ChromeService(executable_path=chrome_app_path, service_args=
 
 driver = webdriver.Chrome(options=options, service=service, keep_alive=True)
 
-results = []
-not_found= []
-
-wait_time = 1.5
-
-selectors = []
-with open("selectors.txt") as s:
-  selectors = [x.strip() for x in s.readlines()]
-
 def test_did_you_mean():
   did_you_mean = driver.find_elements(By.PARTIAL_LINK_TEXT, "who is the ceo of")
   return len(did_you_mean) > 0
-
-selectors_tally = {}
 
 def test_selectors(driver):
   found = None
