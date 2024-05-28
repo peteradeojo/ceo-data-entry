@@ -5,7 +5,7 @@ from functions import *
 import sys
 
 filename = sys.argv[1]
-addresses = get_companies(filename)
+addresses = get_addresses(filename)
 
 results = []
 not_found= []
@@ -60,12 +60,13 @@ def get_selector_report():
       sw.write(f"{selectors[i]}\nScore: {selectors_tally[i]}\n\n")
 
 for address in addresses:
+  _, company = get_company_from_email(parse_entry(address))
   try:
-    driver.get(f"https://www.google.com/search?q=who+is+the+ceo+of+{remove_dot_com(address)}")
+    driver.get(f"https://www.google.com/search?q=who+is+the+ceo+of+{remove_dot_com(company)}")
 
     name = test_selectors(driver)
     if name is not None:
-      results.append(f"{address} {name}")
+      results.append(f"{name}\n{address}\n")
     else:
       not_found.append(address)
   except:

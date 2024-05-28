@@ -9,14 +9,15 @@ not_found = []
 
 filename = sys.argv[1]
 
-addresses = get_companies(filename)
+addresses = get_addresses(filename)
 for address in addresses:
-  html = requests.get(f"https://www.google.com/search?q=who is the ceo of {address}")
+  _, company = get_company_from_email(parse_entry(address))
+  html = requests.get(f"https://www.google.com/search?q=who is the ceo of {remove_dot_com(company)}")
   soup = BeautifulSoup(html.text, features="html.parser")
 
   el = soup.css.select_one("#main > div:nth-of-type(3) span")
   if el and test_valid_name(el.text):
-    results.append(f"Company: {address}. CEO: {el.text}")
+    results.append(f"{el.text}\n{address}\n")
   else:
     not_found.append(address)
 

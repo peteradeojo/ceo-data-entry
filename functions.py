@@ -1,13 +1,14 @@
 import re
 from datetime import datetime
 
-namePattern = re.compile(r"\D", re.IGNORECASE)
+noDigitPattern = re.compile(r"\D", re.IGNORECASE)
+namePattern = re.compile(r"\w{1,3}", re.IGNORECASE)
 
 def get_addresses(filename):
   f = open(filename)
   data = f.readlines()
   f.close()
-  return data
+  return [x.strip() for x in data]
   
 def get_company_from_email(email: str):
   return email.split("@")
@@ -24,7 +25,7 @@ def get_companies(filename):
 
 def test_valid_name(name: str):
   l = len(name.split(" "))
-  return l <= 3 and namePattern.match(name) is not None
+  return l > 1 and l <= 3 and noDigitPattern.match(name) is not None
 
 def get_datetime():
   return datetime.now().strftime("%d-%m-%Y-%H:%M:%S")
