@@ -10,6 +10,8 @@ addresses = get_addresses(filename)
 results = []
 not_found= []
 
+found = 0
+
 wait_time = 1.5
 
 # Set up selectors
@@ -61,27 +63,33 @@ def get_selector_report():
 
 for address in addresses:
   _, company = get_company_from_email(parse_entry(address))
+  print(f"Querying {company}")
   try:
     driver.get(f"https://www.google.com/search?q=who+is+the+ceo+of+{remove_dot_com(company)}")
 
     name = test_selectors(driver)
-    if name is not None:
-      results.append(f"{name}\n{address}\n")
-    else:
+    if name is None:
       not_found.append(address)
+      results.append(f"\n{address}\n")
+    else:
+      found += 1
+      results.append(f"{name}\n{address}\n")
   except:
     continue
 
 tt = get_datetime()
 
-print(f"Found {len(results)} out of {len(addresses)} companies")
+print(f"Found {found} out of {len(addresses)} companies")
+
+outputfile =f"results-{tt}.txt"
 
 if len(results) > 0:
-  with open(f"results-{tt}.txt", "w") as f:
+  with open(outputfile, "w") as f:
     f.write("\n".join(results))
+    print(f"Saved to {outputfile}")
 
 if len(not_found) > 0:
-  with open(f"not-found.txt", "w") as f:
+  with open(f"not-found.txt", "a") as f:
     f.write("\n".join(not_found))
 
 get_selector_report()

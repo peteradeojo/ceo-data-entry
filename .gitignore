@@ -1,6 +1,6 @@
 venv
 *.zip
-*.txt
+# *.txt
 __pycache__
-!requirements.txt
-!selectors.txt
+# !selectors.txt
+# *.csv

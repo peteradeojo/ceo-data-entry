@@ -29,3 +29,7 @@ def test_valid_name(name: str):
 
 def get_datetime():
   return datetime.now().strftime("%d-%m-%Y-%H:%M:%S")
+
+def get_selectors():
+  with open("selectors.txt") as s:
+    return [x.strip() for x in s.readlines()]

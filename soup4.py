@@ -30,5 +30,5 @@ if len(results) > 0:
     f.write("\n".join(results))
 
 if len(not_found) > 0:
-  with open(f"not-found.txt", "w") as f:
+  with open(f"not-found.txt", "a") as f:
     f.write("\n".join(not_found))
