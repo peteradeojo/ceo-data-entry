@@ -33,3 +33,27 @@ def get_datetime():
 def get_selectors():
   with open("selectors.txt") as s:
     return [x.strip() for x in s.readlines()]
+  
+
+def inspect_result(result: str):
+  print(result)
+  options = result.replace(" - ", " ").split(" ")
+  n = len(options)
+  for i in range(n):
+    print(f"{i}. {options[i]}")
+
+  move = input("A to make selection, B to overwrite: ")
+  if move.lower() == "a":
+    selected = input("Enter numbers to select: ").strip().split(",")
+    name = " ".join([options[int(s)] for s in selected])
+    print(name)
+    return name
+  else:
+    return input("Enter name: ").strip()
+
+
+if __name__ == '__main__':
+  with open("names.txt") as file:
+    names = [n.strip() for n in file.readlines()]
+    for n in names:
+      inspect_result(n)

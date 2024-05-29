@@ -7,11 +7,7 @@ def parse_name_out_of_text(text: str):
   return text.split("-")[0].strip()
 
 def confirm_name(name):
-  if name is None or name == "None" or test_valid_name(name) == False:
-    answer = input(f"{name}\nIs this okay (Enter to accept)?: ").strip()
-    if answer == "":
-      return name
-    return answer
+  pass
 
 driver = initialize_driver()
 
@@ -45,7 +41,7 @@ for i in range(n):
       break
 
   if el is not None:
-    file.write(f"{confirm_name(el.text)},{address}\n")
+    file.write(f"{inspect_result(el.text)},{address}\n")
   else:
     file.write(f"Not found,{address}\n")
   
